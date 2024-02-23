@@ -15,4 +15,15 @@ describe('generic', () => {
             const upper = dataString.value.toUpperCase();
             expect(upper).toBe("SYAUQI");
       })
+
+      function create< T >(value:T):T{
+            return value;
+      }
+
+      it('should support', () => {
+            const result = create<string>('Hello');
+            expect(result).toBe('Hello');
+            const result2 = create< number >(43);
+            expect(result2).toBe(43);
+      })
 });
