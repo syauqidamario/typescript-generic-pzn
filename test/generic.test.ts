@@ -26,4 +26,32 @@ describe('generic', () => {
             const result2 = create< number >(43);
             expect(result2).toBe(43);
       })
+
+      class Entry< K, V >
+      {
+            constructor(public key: K, public value: V)
+            {
+
+            }
+      }
+
+      class Triple< K, V, T >
+            {
+                  constructor(public first: K, public second: V, public third: T)
+                  {
+                        
+                  }
+            }
+
+      it('should support', () => 
+      {
+            const entry = new Entry<number, string>(1, "Hey");
+            expect(entry.key).toBe(1);
+            expect(entry.value).toBe('Hey');
+
+            const triple = new Triple<number, string, boolean>(1, 'Hey', true);
+            expect(triple.first).toBe(1);
+            expect(triple.second).toBe('Hey');
+            expect(triple.third).toBe(true);
+      })
 });
