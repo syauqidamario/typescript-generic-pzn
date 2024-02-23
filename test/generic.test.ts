@@ -54,4 +54,33 @@ describe('generic', () => {
             expect(triple.second).toBe('Hey');
             expect(triple.third).toBe(true);
       })
+
+      it('should optional type', () => {
+            const entry = new Entry(1, 'Hi');
+            expect(entry.key).toBe(1);
+            expect(entry.value.toUpperCase()).toBe('HI');
+      });
+
+      class SimpleGeneric < T >
+      {
+            private value?: T;
+
+            setValue(value: T)
+            {
+                  this.value = value;
+            }
+
+            getValue() : T | undefined{
+                  return this.value;
+            }
+      }
+
+      it('should create simple generic', async () => {
+            const simple = new SimpleGeneric();
+            simple.setValue("Eko");
+            // simple.setValue(100);
+            // simple.setValue(true);
+    
+            expect(simple.getValue()!.toUpperCase()).toBe("EKO");
+        });
 });
