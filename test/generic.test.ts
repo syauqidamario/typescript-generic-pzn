@@ -61,7 +61,7 @@ describe('generic', () => {
             expect(entry.value.toUpperCase()).toBe('HI');
       });
 
-      class SimpleGeneric < T >
+      class SimpleGeneric < T = number >
       {
             private value?: T;
 
@@ -76,11 +76,8 @@ describe('generic', () => {
       }
 
       it('should create simple generic', async () => {
-            const simple = new SimpleGeneric();
+            const simple = new SimpleGeneric< string >;
             simple.setValue("Eko");
-            // simple.setValue(100);
-            // simple.setValue(true);
-    
             expect(simple.getValue()!.toUpperCase()).toBe("EKO");
         });
 });
