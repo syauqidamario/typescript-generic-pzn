@@ -80,4 +80,42 @@ describe('generic', () => {
             simple.setValue("Eko");
             expect(simple.getValue()!.toUpperCase()).toBe("EKO");
         });
+
+      interface Ticket
+      {
+            ticket_id: string;
+            passenger_name: string;
+      }
+
+      interface Fee extends Ticket
+      {
+            totalFee: number;
+      }
+
+      interface SeatNumber extends Ticket{
+            seatNumber: number;
+      }
+
+      class TicketData<T extends Ticket>
+      {
+            constructor(public ticket: T){
+
+            }
+      }
+
+      it('should support constraint', async() => 
+      {
+            const ticket1 = new TicketData< Ticket > ({
+                  ticket_id: "001",
+                  passenger_name: "Katsu Anri"
+            });
+            const ticket2 = new TicketData< Fee > ({
+                  ticket_id: "001",
+                  passenger_name: "Katsu Anri",
+                  totalFee: 900000,
+            });
+
+            // const data3 = new TicketData< string >("Yuu Shimamura");
+            // const data4 = new TicketData< number >("3556");
+      })
 });
