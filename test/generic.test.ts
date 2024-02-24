@@ -118,4 +118,33 @@ describe('generic', () => {
             // const data3 = new TicketData< string >("Yuu Shimamura");
             // const data4 = new TicketData< number >("3556");
       })
+
+      it('should support array', () => 
+      {
+            const array = new Array<string>();
+            array.push("Kanon");
+            array.push("Miyahara");
+            expect(array[0].toUpperCase()).toEqual("KANON");
+            expect(array[1].toUpperCase()).toEqual("MIYAHARA");
+      })
+
+      it('should support set', () => 
+      {
+            const set = new Set<string>();
+            set.add('Itono');
+            set.add('Okita');
+            set.add('Mark');
+            // expect(set.size).toBe(2);
+            expect(set.has('Itono')).toBe(true);
+            expect(set.has('Okita')).toBe(true);
+      })
+
+      it('should support map', () => 
+      {
+            const map = new Map<string, number>();
+            map.set('Alisa', 100);
+            map.set('Sakamaki', 99);
+            expect(map.get('Alisa')).toBe(100);
+            expect(map.get('Sakamaki')).toBe(99);
+      })
 });
