@@ -146,5 +146,30 @@ describe('generic', () => {
             map.set('Sakamaki', 99);
             expect(map.get('Alisa')).toBe(100);
             expect(map.get('Sakamaki')).toBe(99);
-      })
+      });
+
+      async function fetchData(value: string): Promise<string> {
+            return new Promise<string>((resolve, reject) => {
+                setTimeout(() => {
+                    if(value === "Syauqi"){
+                        resolve("Hello " + value);
+                    }else{
+                        reject("Not Found");
+                    }
+                }, 1000);
+            })
+        }
+    
+        it('should support promise', async () => {
+    
+            const result = await fetchData("Syauqi");
+            expect(result.toUpperCase()).toBe("HELLO SYAUQI");
+    
+            try {
+                await fetchData("Kelbo");
+            }catch (e){
+                expect(e).toBe("Not Found");
+            }
+    
+        });
 });
